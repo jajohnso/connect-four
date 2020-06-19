@@ -1,0 +1,91 @@
+.disc {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background: none;
+
+    &:active,
+    &:disabled {
+        background: none;
+        border: none;
+    }
+}
+
+.disc-piece {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 15%;
+    left: 12%;
+    height: 77%;
+    width: 77%;
+    border-radius: 100%;
+    box-shadow: inset 1px 1px 0px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1000px);
+    transition: transform 0.5s ease-in, opacity 0.15s ease-in;
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 80%;
+        width: 80%;
+        top: 10%;
+        left: 10%;
+        border-radius: 100%;
+    }
+}
+
+.disc_X {
+    .disc-piece {
+        background: linear-gradient(0deg, #cf044c 4%, #ff186a 80%);
+        transform: translateY(0px);
+        visibility: visible;
+        opacity: 1;
+
+        &:after {
+            background: linear-gradient(0, #cf044c 4%, #ac023d 70%);
+            box-shadow: inset 3px 3px 1px rgba(116, 1, 41, 0.35), inset -2px -2px 0px rgba(255, 255, 255, 0.15);
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+    }
+}
+
+.disc_O {
+    .disc-piece {
+        background: linear-gradient(0deg, rgb(240, 234, 69) 4%, rgb(240, 220, 69) 150%);
+        transform: translateY(0px);
+        visibility: visible;
+        opacity: 1;
+
+        &:after {
+            background: linear-gradient(143deg, #f0ea45 4%, #c7b638 70%);
+            box-shadow: inset 3px 3px 1px rgb(210, 190, 38), inset -2px -2px 0px rgba(255, 255, 255, 0.5);
+        }
+    }
+}
+
+.disc_isMatch .disc-piece {
+    z-index: 2;
+
+    animation: MATCH_ANIMATION 0.5s;
+    transform: scale(1.25);
+}
+
+.disc-value {
+    display: none;
+}
+@keyframes MATCH_ANIMATION {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1.25);
+    }
+}
