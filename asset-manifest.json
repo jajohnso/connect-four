@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/github.io/connect-four/static/css/main.c4d29778.chunk.css",
-    "main.js": "/github.io/connect-four/static/js/main.e95c9c90.chunk.js",
-    "main.js.map": "/github.io/connect-four/static/js/main.e95c9c90.chunk.js.map",
-    "runtime-main.js": "/github.io/connect-four/static/js/runtime-main.7252e419.js",
-    "runtime-main.js.map": "/github.io/connect-four/static/js/runtime-main.7252e419.js.map",
-    "static/js/2.8fa53232.chunk.js": "/github.io/connect-four/static/js/2.8fa53232.chunk.js",
-    "static/js/2.8fa53232.chunk.js.map": "/github.io/connect-four/static/js/2.8fa53232.chunk.js.map",
-    "index.html": "/github.io/connect-four/index.html",
-    "precache-manifest.3b8844efb0e4d3b4451aa306cae6bffd.js": "/github.io/connect-four/precache-manifest.3b8844efb0e4d3b4451aa306cae6bffd.js",
-    "service-worker.js": "/github.io/connect-four/service-worker.js",
-    "static/css/main.c4d29778.chunk.css.map": "/github.io/connect-four/static/css/main.c4d29778.chunk.css.map",
-    "static/js/2.8fa53232.chunk.js.LICENSE": "/github.io/connect-four/static/js/2.8fa53232.chunk.js.LICENSE",
-    "static/media/Board.scss": "/github.io/connect-four/static/media/boardDisc.12912e29.svg"
+    "main.css": "/connect-four/static/css/main.9096806a.chunk.css",
+    "main.js": "/connect-four/static/js/main.22abfe5a.chunk.js",
+    "main.js.map": "/connect-four/static/js/main.22abfe5a.chunk.js.map",
+    "runtime-main.js": "/connect-four/static/js/runtime-main.d23791a2.js",
+    "runtime-main.js.map": "/connect-four/static/js/runtime-main.d23791a2.js.map",
+    "static/js/2.8fa53232.chunk.js": "/connect-four/static/js/2.8fa53232.chunk.js",
+    "static/js/2.8fa53232.chunk.js.map": "/connect-four/static/js/2.8fa53232.chunk.js.map",
+    "index.html": "/connect-four/index.html",
+    "precache-manifest.6392e5d0e9f1b3c59e0beb16684ec535.js": "/connect-four/precache-manifest.6392e5d0e9f1b3c59e0beb16684ec535.js",
+    "service-worker.js": "/connect-four/service-worker.js",
+    "static/css/main.9096806a.chunk.css.map": "/connect-four/static/css/main.9096806a.chunk.css.map",
+    "static/js/2.8fa53232.chunk.js.LICENSE": "/connect-four/static/js/2.8fa53232.chunk.js.LICENSE",
+    "static/media/Board.scss": "/connect-four/static/media/boardDisc.12912e29.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7252e419.js",
+    "static/js/runtime-main.d23791a2.js",
     "static/js/2.8fa53232.chunk.js",
-    "static/css/main.c4d29778.chunk.css",
-    "static/js/main.e95c9c90.chunk.js"
+    "static/css/main.9096806a.chunk.css",
+    "static/js/main.22abfe5a.chunk.js"
   ]
 }
