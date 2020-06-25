@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/connect-four/static/css/main.9096806a.chunk.css",
-    "main.js": "/connect-four/static/js/main.22abfe5a.chunk.js",
-    "main.js.map": "/connect-four/static/js/main.22abfe5a.chunk.js.map",
+    "main.css": "/connect-four/static/css/main.27584715.chunk.css",
+    "main.js": "/connect-four/static/js/main.44e12b01.chunk.js",
+    "main.js.map": "/connect-four/static/js/main.44e12b01.chunk.js.map",
     "runtime-main.js": "/connect-four/static/js/runtime-main.d23791a2.js",
     "runtime-main.js.map": "/connect-four/static/js/runtime-main.d23791a2.js.map",
     "static/js/2.8fa53232.chunk.js": "/connect-four/static/js/2.8fa53232.chunk.js",
     "static/js/2.8fa53232.chunk.js.map": "/connect-four/static/js/2.8fa53232.chunk.js.map",
     "index.html": "/connect-four/index.html",
-    "precache-manifest.6392e5d0e9f1b3c59e0beb16684ec535.js": "/connect-four/precache-manifest.6392e5d0e9f1b3c59e0beb16684ec535.js",
+    "precache-manifest.04e50dd917ca0b28162cd93f76c6be90.js": "/connect-four/precache-manifest.04e50dd917ca0b28162cd93f76c6be90.js",
     "service-worker.js": "/connect-four/service-worker.js",
-    "static/css/main.9096806a.chunk.css.map": "/connect-four/static/css/main.9096806a.chunk.css.map",
+    "static/css/main.27584715.chunk.css.map": "/connect-four/static/css/main.27584715.chunk.css.map",
     "static/js/2.8fa53232.chunk.js.LICENSE": "/connect-four/static/js/2.8fa53232.chunk.js.LICENSE",
     "static/media/Board.scss": "/connect-four/static/media/boardDisc.12912e29.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.d23791a2.js",
     "static/js/2.8fa53232.chunk.js",
-    "static/css/main.9096806a.chunk.css",
-    "static/js/main.22abfe5a.chunk.js"
+    "static/css/main.27584715.chunk.css",
+    "static/js/main.44e12b01.chunk.js"
   ]
 }
