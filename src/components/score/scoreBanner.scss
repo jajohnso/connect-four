@@ -12,3 +12,21 @@
     padding: 40px;
     text-align: center;
 }
+
+.scoreBanner-reset {
+    background: none;
+    border: 2px solid #fff;
+    display: block;
+    padding: 10px 30px;
+    color: #fff;
+    border-radius: 50px;
+    margin: 10px auto;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover,
+    &:focus {
+        background: #fff;
+        color: #000;
+    }
+}

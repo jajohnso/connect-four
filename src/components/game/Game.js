@@ -18,6 +18,14 @@ class Game extends Component {
         };
     }
 
+    handleResetGame = () => {
+        this.setState({
+            discs: Array(BOARD_CONFIG.HEIGHT * BOARD_CONFIG.WIDTH).fill(null),
+            isWinner: false,
+            player1Up: false,
+        });
+    };
+
     getNextSlot = (rowIndex) => {
         let slotsInClickedRow = [];
         const { WIDTH } = BOARD_CONFIG;
@@ -210,7 +218,7 @@ class Game extends Component {
 
         return (
             <>
-                <Score isWinner={winner} player1Up={this.state.player1Up} />
+                <Score isWinner={winner} player1Up={this.state.player1Up} handleResetGame={this.handleResetGame} />
                 <Board isWinner={winner} discs={this.state.discs} config={BOARD_CONFIG} onDiscClick={this.handleOnDiscClick} matches={matches} />
             </>
         );

@@ -4,7 +4,7 @@ import './score.scss';
 import classNames from '../../utilities/ClassNames';
 import Disc from '../disc/Disc';
 
-export const Score = ({ isWinner, player1Up }) => {
+export const Score = ({ isWinner, player1Up, handleResetGame }) => {
     const winner = player1Up ? 'Player 1' : 'Player 2';
     const currentPlayerUp = player1Up ? 1 : 2;
     const getPlayerClassName = (playerIndex) => {
@@ -30,7 +30,7 @@ export const Score = ({ isWinner, player1Up }) => {
                     Player 2
                 </div>
             </div>
-            {isWinner && <ScoreBanner winner={winner} />}
+            {isWinner && <ScoreBanner winner={winner} handleResetGame={handleResetGame} />}
         </div>
     );
 };
