@@ -48,6 +48,10 @@
 .board-slot {
     position: relative;
 
+    &:focus {
+        outline: none;
+    }
+
     &:after {
         position: absolute;
         top: 0;

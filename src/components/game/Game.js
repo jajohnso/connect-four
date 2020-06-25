@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Board from '../board/Board';
+import { Score } from '../score/Score';
 
 const BOARD_CONFIG = {
     HEIGHT: 6,
@@ -13,6 +14,7 @@ class Game extends Component {
         this.state = {
             discs: Array(BOARD_CONFIG.HEIGHT * BOARD_CONFIG.WIDTH).fill(null),
             isWinner: false,
+            player1Up: false,
         };
     }
 
@@ -36,67 +38,68 @@ class Game extends Component {
         const discs = [...this.state.discs];
         const nextSlotIndex = this.getNextSlot(rowIndex);
 
-        discs[nextSlotIndex] = this.state.xIsNext ? 'X' : 'O';
+        discs[nextSlotIndex] = this.state.player1Up ? 'X' : 'O';
+
         this.setState({
             discs: discs,
-            xIsNext: !this.state.xIsNext,
+            player1Up: !this.state.player1Up,
         });
     };
 
     checkForWinner = () => {
-        let fourInARow = false;
+        let winner = false;
         let matches = [];
 
         this.state.discs.forEach((disc, index) => {
-            if (!disc || fourInARow) {
+            if (!disc || winner) {
                 return;
             }
 
             // horizontal check
-            let horizontalFourInARow = {};
+            let horizontalWinner = {};
             if (index % BOARD_CONFIG.WIDTH <= 4) {
-                horizontalFourInARow = this.checkForHorizontalMatches(disc, index);
+                horizontalWinner = this.checkForHorizontalMatches(disc, index);
             }
 
             // vertical check
             const minRemainingRowsToMatchVertical = Math.ceil(BOARD_CONFIG.HEIGHT - (index + 1) / BOARD_CONFIG.WIDTH);
 
             if (minRemainingRowsToMatchVertical >= 4) {
-                let diagonalRightFourInARow = {};
-                let diagonalLeftFourInARow = {};
+                let diagonalRightWinner = {};
+                let diagonalLeftWinner = {};
 
-                const verticalFourInARow = this.checkForVerticalMatches(disc, index);
+                const verticalWinner = this.checkForVerticalMatches(disc, index);
                 if (BOARD_CONFIG.WIDTH - index >= 4) {
-                    diagonalRightFourInARow = this.checkForDiagonalRightMatches(disc, index);
+                    diagonalRightWinner = this.checkForDiagonalRightMatches(disc, index);
                 }
                 if (BOARD_CONFIG.WIDTH - index <= 4) {
-                    diagonalLeftFourInARow = this.checkForDiagonalLeftMatches(disc, index);
+                    diagonalLeftWinner = this.checkForDiagonalLeftMatches(disc, index);
                 }
 
-                if (horizontalFourInARow.isFourInARow) {
-                    matches = horizontalFourInARow.matches;
-                    fourInARow = horizontalFourInARow.isFourInARow;
+                if (horizontalWinner.isWinner) {
+                    matches = horizontalWinner.matches;
+                    winner = horizontalWinner.isWinner;
                 }
-                if (verticalFourInARow.isFourInARow) {
-                    matches = verticalFourInARow.matches;
-                    fourInARow = verticalFourInARow.isFourInARow;
+                if (verticalWinner.isWinner) {
+                    matches = verticalWinner.matches;
+                    winner = verticalWinner.isWinner;
                 }
-                if (diagonalLeftFourInARow.isFourInARow) {
-                    matches = diagonalLeftFourInARow.matches;
-                    fourInARow = diagonalLeftFourInARow.isFourInARow;
+                if (diagonalLeftWinner.isWinner) {
+                    matches = diagonalLeftWinner.matches;
+                    winner = diagonalLeftWinner.isWinner;
                 }
-                if (diagonalRightFourInARow.isFourInARow) {
-                    matches = diagonalRightFourInARow.matches;
-                    fourInARow = diagonalRightFourInARow.isFourInARow;
+                if (diagonalRightWinner.isWinner) {
+                    matches = diagonalRightWinner.matches;
+                    winner = diagonalRightWinner.isWinner;
                 }
             }
-            return fourInARow;
+            return winner;
         });
-        return { fourInARow, matches };
+        return { winner, matches };
     };
 
     checkForHorizontalMatches = (disc, index) => {
-        let horizontalFourInARow = false;
+        let horizontalWinner = false;
         const matchLength = 3;
         let i = 0;
         let localIndex = index;
@@ -105,7 +108,7 @@ class Game extends Component {
         for (; i < matchLength; i++) {
             const nextDisc = this.state.discs[localIndex + 1];
             if (!nextDisc) {
-                horizontalFourInARow = false;
+                horizontalWinner = false;
                 break;
             }
 
@@ -114,16 +117,16 @@ class Game extends Component {
                 matches.push(localIndex);
             }
             if (disc === nextDisc && i === matchLength - 1) {
-                horizontalFourInARow = true;
+                horizontalWinner = true;
                 break;
             }
         }
 
-        return { isFourInARow: horizontalFourInARow, matches };
+        return { isWinner: horizontalWinner, matches };
     };
 
     checkForVerticalMatches = (disc, index) => {
-        let verticalFourInARow = false;
+        let verticalWinner = false;
         const matchLength = 3;
         let i = 0;
         let localIndex = index;
@@ -132,7 +135,7 @@ class Game extends Component {
             const nextDisc = this.state.discs[localIndex + BOARD_CONFIG.WIDTH];
 
             if (!nextDisc) {
-                verticalFourInARow = false;
+                verticalWinner = false;
                 break;
             }
             if (disc === nextDisc) {
@@ -141,16 +144,16 @@ class Game extends Component {
             }
 
             if (disc === nextDisc && i === matchLength - 1) {
-                verticalFourInARow = true;
+                verticalWinner = true;
 
                 break;
             }
         }
-        return { isFourInARow: verticalFourInARow, matches };
+        return { isWinner: verticalWinner, matches };
     };
 
     checkForDiagonalLeftMatches = (disc, index) => {
-        let diagonalLeftFourInARow = false;
+        let diagonalLeftWinner = false;
         const matchLength = 3;
         let i = 0;
         let localIndex = index;
@@ -159,7 +162,7 @@ class Game extends Component {
             const nextDisc = this.state.discs[localIndex + BOARD_CONFIG.WIDTH - 1];
 
             if (!nextDisc) {
-                diagonalLeftFourInARow = false;
+                diagonalLeftWinner = false;
                 break;
             }
             if (disc === nextDisc) {
@@ -168,16 +171,16 @@ class Game extends Component {
             }
 
             if (disc === nextDisc && i === matchLength - 1) {
-                diagonalLeftFourInARow = true;
+                diagonalLeftWinner = true;
                 break;
             }
         }
 
-        return { isFourInARow: diagonalLeftFourInARow, matches };
+        return { isWinner: diagonalLeftWinner, matches };
     };
 
     checkForDiagonalRightMatches = (disc, index) => {
-        let diagonalRightFourInARow = false;
+        let diagonalRightWinner = false;
         const matchLength = 3;
         let i = 0;
         let localIndex = index;
@@ -186,7 +189,7 @@ class Game extends Component {
             const nextDisc = this.state.discs[localIndex + BOARD_CONFIG.WIDTH + 1];
 
             if (!nextDisc) {
-                diagonalRightFourInARow = false;
+                diagonalRightWinner = false;
                 break;
             }
             if (disc === nextDisc) {
@@ -195,20 +198,20 @@ class Game extends Component {
             }
 
             if (disc === nextDisc && i === matchLength - 1) {
-                diagonalRightFourInARow = true;
+                diagonalRightWinner = true;
                 break;
             }
         }
-        return { isFourInARow: diagonalRightFourInARow, matches };
+        return { isWinner: diagonalRightWinner, matches };
     };
 
     render() {
-        const { fourInARow, matches } = this.checkForWinner();
+        const { winner, matches } = this.checkForWinner();
 
         return (
             <>
-                {fourInARow && <div>We have a winner</div>}
-                <Board discs={this.state.discs} config={BOARD_CONFIG} onDiscClick={this.handleOnDiscClick} matches={matches} />
+                <Score isWinner={winner} player1Up={this.state.player1Up} />
+                <Board isWinner={winner} discs={this.state.discs} config={BOARD_CONFIG} onDiscClick={this.handleOnDiscClick} matches={matches} />
             </>
         );
     }

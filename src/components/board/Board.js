@@ -20,7 +20,7 @@ class Board extends Component {
         this.setState({ hoveredRow: rowIndex });
     };
 
-    handleOnMouseOut = (rowIndex) => {
+    handleOnMouseOut = () => {
         this.setState({ hoveredRow: null });
     };
 
@@ -32,6 +32,7 @@ class Board extends Component {
     };
 
     render() {
+        const { isWinner } = this.props;
         return (
             <ul className={`board board_${this.props.config.WIDTH}up`}>
                 {this.props.discs.map((disc, index) => {
@@ -45,7 +46,7 @@ class Board extends Component {
                             className={this.getSlotClassName(columnIndex)}
                             data-column={columnIndex}
                         >
-                            <Disc value={disc} isMatch={isMatch} onClick={() => this.props.onDiscClick(columnIndex)} />
+                            <Disc value={disc} isWinner={isWinner} isMatch={isMatch} onClick={() => this.props.onDiscClick(columnIndex)} />
                         </li>
                     );
                 })}

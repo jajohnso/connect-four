@@ -1,0 +1,39 @@
+.score {
+    font-family: 'Luckiest Guy', cursive;
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+}
+
+.score-players {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-players-player {
+    font-size: 32px;
+    padding: 10px;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 4px #000;
+}
+
+.score-players-player:first-of-type {
+    border-radius: 0 500px 500px 0;
+    border-left: 0;
+}
+
+.score-players-player:nth-of-type(2) {
+    border-radius: 500px 0 0 500px;
+    border-right: 0;
+}
+
+.score-players-player-disc {
+    height: 100px;
+    width: 100px;
+    position: relative;
+}
