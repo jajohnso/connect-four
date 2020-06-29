@@ -6,7 +6,7 @@ import Disc from '../disc/Disc';
 
 export const Score = ({ isWinner, player1Up, handleResetGame }) => {
     const winner = player1Up ? 'Player 1' : 'Player 2';
-    const currentPlayerUp = player1Up ? 1 : 2;
+    const currentPlayerUp = player1Up ? 2 : 1;
     const getPlayerClassName = (playerIndex) => {
         return classNames({
             'score-players-player': true,

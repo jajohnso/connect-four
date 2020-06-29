@@ -70,17 +70,18 @@ class Game extends Component {
             }
 
             // vertical check
-            const minRemainingRowsToMatchVertical = Math.ceil(BOARD_CONFIG.HEIGHT - (index + 1) / BOARD_CONFIG.WIDTH);
+            const shouldCheckVerticalMatches = Math.ceil((index + 1) / BOARD_CONFIG.WIDTH) <= BOARD_CONFIG.HEIGHT - 3;
 
-            if (minRemainingRowsToMatchVertical >= 4) {
+            if (shouldCheckVerticalMatches) {
                 let diagonalRightWinner = {};
                 let diagonalLeftWinner = {};
 
                 const verticalWinner = this.checkForVerticalMatches(disc, index);
-                if (BOARD_CONFIG.WIDTH - index >= 4) {
+
+                if (index % BOARD_CONFIG.WIDTH >= 4) {
                     diagonalRightWinner = this.checkForDiagonalRightMatches(disc, index);
                 }
-                if (BOARD_CONFIG.WIDTH - index <= 4) {
+                if (index % BOARD_CONFIG.WIDTH <= 4) {
                     diagonalLeftWinner = this.checkForDiagonalLeftMatches(disc, index);
                 }
 
@@ -167,14 +168,14 @@ class Game extends Component {
         let localIndex = index;
         let matches = [index];
         for (; i < matchLength; i++) {
-            const nextDisc = this.state.discs[localIndex + BOARD_CONFIG.WIDTH - 1];
+            const nextDisc = this.state.discs[localIndex + BOARD_CONFIG.WIDTH + 1];
 
             if (!nextDisc) {
                 diagonalLeftWinner = false;
                 break;
             }
             if (disc === nextDisc) {
-                localIndex = localIndex + BOARD_CONFIG.WIDTH - 1;
+                localIndex = localIndex + BOARD_CONFIG.WIDTH + 1;
                 matches.push(localIndex);
             }
 
@@ -194,14 +195,14 @@ class Game extends Component {
         let localIndex = index;
         let matches = [index];
         for (; i < matchLength; i++) {
-            const nextDisc = this.state.discs[localIndex + BOARD_CONFIG.WIDTH + 1];
+            const nextDisc = this.state.discs[localIndex + BOARD_CONFIG.WIDTH - 1];
 
             if (!nextDisc) {
                 diagonalRightWinner = false;
                 break;
             }
             if (disc === nextDisc) {
-                localIndex = localIndex + BOARD_CONFIG.WIDTH + 1;
+                localIndex = localIndex + BOARD_CONFIG.WIDTH - 1;
                 matches.push(localIndex);
             }
 

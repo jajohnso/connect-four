@@ -37,3 +37,19 @@
     width: 100px;
     position: relative;
 }
+
+.score-players-player_isUp {
+    & .score-players-player-disc {
+        transform: translate3d(50px, 0, 0) scale(1.5);
+        animation: rotation 4s infinite linear;
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate3d(1, 0, 0, 0deg);
+    }
+    to {
+        transform: rotate3d(1, 0, 0, 360deg);
+    }
+}
